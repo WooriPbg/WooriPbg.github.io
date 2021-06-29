@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="../code/realgrid-style.css" rel="stylesheet" />
+    <link href="../code/covid19.css" rel="stylesheet" />
+    <title>코로나 예방접종센터 찾기</title>
+  </head>
+  <body>
+    <div class="form0"><p class="title">코로나 예방접종센터 찾기</p></div>
+    <div class="form1">
+      <div class="title" id="title">
+        <div class="control-radio">
+          <input
+            type="radio"
+            name="chk"
+            value="grid"
+            onclick="ClickRadio()"
+            checked
+          /><label class="label" for="grid">그리드</label>
+          <input
+            type="radio"
+            name="chk"
+            value="data"
+            onclick="ClickRadio()"
+          /><label class="label" for="data">데이터</label>
+          <input
+            type="radio"
+            name="chk"
+            value="app"
+            onclick="ClickRadio()"
+          /><label class="label" for="app">앱</label>
+        </div>
+        <button id="close" onclick="controlClose()">컨트롤 열기</button>
+      </div>
+    </div>
+    <div class="radio" id="grid">
+      <p class="control-head">그리드 설정</p>
+      <div class="control-body">
+        <form action="#" method="get" id="form2">
+          <div class="box">
+            <a>컬럼</a>
+            <input type="checkbox" id="fixed" onclick="columnfiexd()" />
+            <label for="fixed"> 열 고정 </label>
+            <input type="checkbox" id="hide" onclick="btnContextMenu()" />
+            <label for="hide"> 컬럼 숨기기 메뉴 표시 </label>
+          </div>
+          <div class="box">
+            <a>필터</a>
+            <input type="checkbox" id="sido" onclick="sidoFilter()" /><label
+              for="sido"
+            >
+              시도
+            </label>
+            <input
+              type="checkbox"
+              id="centerType"
+              onclick="centerFilter()"
+            /><label for="centerType"> 예방접종센터 유형 </label>
+          </div>
+          <div class="box">
+            <a>선택</a>
+            <input type="checkbox" id="rows" onclick="SelectRows()" /><label
+              for="rows"
+            >
+              셀 클릭 시 행 선택
+            </label>
+          </div>
+          <div class="box">
+            <a>내보내기</a>
+            <button onclick="excelExport()">엑셀 다운로드</button>
+          </div>
+        </form>
+      </div>
+      <p class="control-head">그리드 검색</p>
+      <div class="control-body">
+        <form action="#" method="get" id="form3">
+          <div class="box">
+            <input
+              type="text"
+              id="textSearch"
+              placeholder="시군구명 입력"
+              required
+            />
+            <button onclick="gridSearch()">검색하기</button>
+            <button onclick="searchReset()">초기화</button>
+            <input type="checkbox" id="search" onclick="" /><label for="search"
+              >검색 결과에 색상 표시</label
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="radio" id="data">
+      <p class="control-head">실시간 데이터 검색</p>
+      <div class="control-body">
+        <form action="#" method="get" id="form4">
+          <div class="box">
+            <select name="sido">
+              <option value="시도">시도</option>
+              <option value="강원도">강원도</option>
+              <option value="경기도">경기도</option>
+              <option value="경상북도">경상북도</option>
+              <option value="광주광역시">광주광역시</option>
+              <option value="대구광역시">대구광역시</option>
+              <option value="부산광역시">부산광역시</option>
+              <option value="서울특별시">서울특별시</option>
+            </select>
+            <select name="sigungu">
+              <option value="시군구">시군구</option>
+              <option value="원주시">원주시</option>
+              <option value="춘천시">강릉시</option>
+              <option value="삼척시">삼척시</option>
+              <option value="동해시">동해시</option>
+              <option value="태백시">태백시</option>
+              <option value="속초시">속초시</option>
+              <option value="평창군">평창군</option>
+            </select>
+            <button onclick="gridSearch()">검색하기</button>
+            <button onclick="searchReset()">초기화</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="radio" id="app">
+      <p class="control-head">앱 설정</p>
+      <div class="control-body">
+        <form action="#" method="get" id="form5">
+          <div class="box">
+            <a>화면</a>
+            <input type="checkbox" id="map" onclick="" /><label for="map"
+              >지도 표시</label
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="grid">
+      <a id="time"></a><a id="page"></a>
+      <div id="realgrid"></div>
+      <script type="text/javascript" src="../code/realgrid-lic.js"></script>
+      <script
+        type="text/javascript"
+        src="../code/realgrid.2.3.1.min.js"
+      ></script>
+      <script type="text/javascript" src="../code/covid19.js"></script>
+      <script src="../code/libs/jszip.min.js"></script>
+    </div>
+  </body>
+</html>
