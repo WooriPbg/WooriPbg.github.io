@@ -48,7 +48,7 @@ window.addEventListener(
 // _.throttle(함수, 시간)
 
 toTopEl.addEventListener('click', function () {
-  gasp.to(window, 0.7, {
+  gsap.to(window, 0.7, {
     scrollTo: 0,
   });
 });
